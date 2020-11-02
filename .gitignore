@@ -1,2 +1,4 @@
 data/word2vec
 .vscode
+data/stsbenchmark/
+data/Stsbenchmark.tar.gz
