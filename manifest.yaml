@@ -1,0 +1,10 @@
+---
+applications:
+  - name: sentence_similarity
+    host: sentence_similarity
+    memory: 1024M
+    timeout: 120
+    buildpack: python_buildpack
+
+services:
+  - ipd-uaa

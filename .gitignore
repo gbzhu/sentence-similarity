@@ -1,4 +1,5 @@
-data/word2vec
+__pycache__
 .vscode
+data/word2vec
 data/stsbenchmark/
 data/Stsbenchmark.tar.gz
