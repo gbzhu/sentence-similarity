@@ -11,7 +11,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import nltk
 from flask import Flask, globals, Response, request
 import json
-
+import os
 import pickle
 
 
@@ -114,4 +114,5 @@ def main():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.getenv("PORT", 8080))
+    app.run(host='0.0.0.0', port=port)
