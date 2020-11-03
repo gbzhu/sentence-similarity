@@ -5,6 +5,3 @@ applications:
     memory: 1024M
     timeout: 120
     buildpack: python_buildpack
-
-services:
-  - ipd-uaa

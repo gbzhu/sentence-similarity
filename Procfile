@@ -1,1 +1,1 @@
-web: python cf_client_4_di_uaa.py
+web: python sentence_similarity.py

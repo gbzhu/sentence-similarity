@@ -12,6 +12,8 @@ import nltk
 from flask import Flask, globals, Response, request
 import json
 
+import pickle
+
 
 class Sentence:
     def __init__(self, sentence):
@@ -76,6 +78,10 @@ def run_avg_benchmark(sentences1,
 PATH_TO_WORD2VEC = './data/word2vec/GoogleNews-vectors-negative300.bin.gz'
 WORD2VEC = gensim.models.KeyedVectors.load_word2vec_format(PATH_TO_WORD2VEC,
                                                            binary=True)
+# with open('data.pickle', 'wb') as f:
+#     # Pickle the 'data' dictionary using the highest protocol available.
+#     pickle.dump(WORD2VEC, f, pickle.HIGHEST_PROTOCOL)
+
 PATH_TO_FREQUENCIES_FILE = './data/frequencies.tsv'
 PATH_TO_DOC_FREQUENCIES_FILE = './data/doc_frequencies.tsv'
 
