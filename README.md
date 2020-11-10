@@ -36,3 +36,7 @@ For compute the semantic similarity between two sentences or short text.
 
 * 后期还有一个问题需要考虑，当我们在创建need的时候，需要将当前need跟以前的need进行相似度检测，当数据库中need足够多的时候，如果一条一条地拿出来跟当前need进行比较，可能会有较长时间的延迟
     - 可考虑一次将所有的旧need拿出来，只请求一次，找出与当前need最相近的一天或者几条或者没有，这需要优化当前app的处理逻辑
+
+### 参考
+
+* [nlp-notebooks](https://github.com/nlptown/nlp-notebooks)
