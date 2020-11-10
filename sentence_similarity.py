@@ -1,18 +1,24 @@
-import tensorflow as tf
-import pandas as pd
 import numpy as np
 import gensim
 from gensim.models import Word2Vec
 import csv
 from collections import Counter
 import math
-from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import nltk
 from flask import Flask, globals, Response, request
 import json
 import os
-import pickle
+
+app = Flask(__name__)
+PATH_TO_WORD2VEC = './data/GoogleNews-vectors-negative300.bin.gz'
+WORD2VEC = None
+
+# PATH_TO_FREQUENCIES_FILE = './data/frequencies.tsv'
+PATH_TO_DOC_FREQUENCIES_FILE = './data/doc_frequencies.tsv'
+FREQUENCIES = None
+DOC_FREQUENCIES = None
+STOP = None
 
 
 class Sentence:
@@ -31,7 +37,6 @@ def read_tsv(f):
         tsv_reader = csv.reader(tsv, delimiter="\t")
         for row in tsv_reader:
             frequencies[row[0]] = int(row[1])
-
     return frequencies
 
 
@@ -75,32 +80,19 @@ def run_avg_benchmark(sentences1,
     return sim
 
 
-PATH_TO_WORD2VEC = './data/word2vec/GoogleNews-vectors-negative300.bin.gz'
-WORD2VEC = gensim.models.KeyedVectors.load_word2vec_format(PATH_TO_WORD2VEC,
-                                                           binary=True)
-# with open('data.pickle', 'wb') as f:
-#     # Pickle the 'data' dictionary using the highest protocol available.
-#     pickle.dump(WORD2VEC, f, pickle.HIGHEST_PROTOCOL)
-
-PATH_TO_FREQUENCIES_FILE = './data/frequencies.tsv'
-PATH_TO_DOC_FREQUENCIES_FILE = './data/doc_frequencies.tsv'
-
-# in order to compute weighted averages of word embeddings later,
-# we are going to load a file with word frequencies.
-# These word frequencies have been collected from Wikipedia
-# and saved in a tab-separated file.
-
-# frequencies = read_tsv(PATH_TO_FREQUENCIES_FILE)
-DOC_FREQUENCIES = read_tsv(PATH_TO_DOC_FREQUENCIES_FILE)
-DOC_FREQUENCIES["NUM_DOCS"] = 1288431
-
-STOP = set(nltk.corpus.stopwords.words("english"))
-
-app = Flask(__name__)
-
-
 @app.route('/', methods=['POST', 'GET'])
 def main():
+    global STOP
+    if STOP is None:
+        STOP = set(nltk.corpus.stopwords.words("english"))
+    global WORD2VEC
+    if WORD2VEC is None:
+        WORD2VEC = gensim.models.KeyedVectors.load_word2vec_format(
+            PATH_TO_WORD2VEC, binary=True)
+    global DOC_FREQUENCIES
+    if DOC_FREQUENCIES is None:
+        DOC_FREQUENCIES = read_tsv(PATH_TO_DOC_FREQUENCIES_FILE)
+        DOC_FREQUENCIES["NUM_DOCS"] = 1288431
     req_data = json.loads(globals.request.data)
     ss = list(req_data.values())[0]
     s1 = Sentence(ss[0])
@@ -114,5 +106,6 @@ def main():
 
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 8080))
-    app.run(host='0.0.0.0', port=port)
+    # port = int(os.getenv("PORT", 8080))
+    # app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=5000)

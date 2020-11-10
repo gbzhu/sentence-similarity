@@ -1,11 +1,8 @@
 # for analysis
 gensim==3.8.3
-tensorflow==2.3.1
-pandas==1.1.3
 numpy==1.18.5
 nltk==3.5
-scipy==1.5.3
-
+sklearn
 # for request
 Flask
 requests

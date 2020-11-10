@@ -6,6 +6,6 @@ applications:
     timeout: 120
     buildpack: python_buildpack
     disk_quota: 2GB
-cc:
-  packages:
-    max_package_size: 2147483648
+
+# services:
+#   - engr-uaa
