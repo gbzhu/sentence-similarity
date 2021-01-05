@@ -2,10 +2,12 @@
 applications:
   - name: sentence_similarity
     host: sentence_similarity
-    memory: 1024M
+    memory: 4G
     timeout: 120
     buildpack: python_buildpack
-    disk_quota: 2GB
-
+    disk_quota: 4GB
+cc:
+  packages:
+    max_package_size: 4G
 # services:
 #   - engr-uaa

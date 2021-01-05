@@ -2,3 +2,8 @@ __pycache__
 .vscode
 *.ipynb
 *.md
+data/.ipynb_checkpoints
+data/stsbenchmark
+data/word2vec/*.bin
+data/word2vec/*.npy
+data/*.tsv

@@ -1,1 +1,1 @@
-web: python sentence_similarity.py
+web: python sentence_similarity_1.py

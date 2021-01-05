@@ -1,7 +1,4 @@
 __pycache__
 .vscode
-*.pickle
-data/word2vec
-data/stsbenchmark/
-data/Stsbenchmark.tar.gz
-data/*.bin.gz
+.ipynb_checkpoints
+data/
