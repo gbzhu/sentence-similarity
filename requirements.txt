@@ -6,3 +6,7 @@ sklearn
 # for request
 Flask
 requests
+
+# tensorflow
+# tensorflow_hub
+# pandas

@@ -1,13 +1,9 @@
 ---
 applications:
-  - name: sentence_similarity
-    host: sentence_similarity
-    memory: 4G
+  - name: epd-sentence-similarity-srv
+    host: epd-sentence-similarity
+    memory: 1024M
     timeout: 120
     buildpack: python_buildpack
-    disk_quota: 4GB
-cc:
-  packages:
-    max_package_size: 4G
-# services:
-#   - engr-uaa
+    disk_quote: 3G
+    

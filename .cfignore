@@ -1,9 +1,11 @@
 __pycache__
+.ipynb_checkpoints
+.virtual_documents
 .vscode
 *.ipynb
 *.md
 data/.ipynb_checkpoints
 data/stsbenchmark
-data/word2vec/*.bin
-data/word2vec/*.npy
+data/word2vec_gz
 data/*.tsv
+nltk.txt
