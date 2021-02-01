@@ -8,4 +8,3 @@ data/.ipynb_checkpoints
 data/stsbenchmark
 data/word2vec_gz
 data/*.tsv
-nltk.txt

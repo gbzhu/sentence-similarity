@@ -4,6 +4,4 @@ applications:
     host: epd-sentence-similarity
     memory: 1024M
     timeout: 120
-    buildpack: python_buildpack
-    disk_quote: 3G
-    
+    disk_quota: 2G
